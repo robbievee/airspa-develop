@@ -1,0 +1,36 @@
+{
+  "name": "air-spa-webapp",
+  "authors": [
+    "Roberto Veropalumbo"
+  ],
+  "description": "Air Web Application",
+  "main": "src/main/webapp/index.html",
+  "keywords": [
+    "java",
+    "maven",
+    "angularjs"
+  ],
+  "homepage": "http://vee-electronics.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  	"highcharts": "v5.0.11",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "angular": "angularjs#^1.6.4",
+    "font-awesome": "^4.7.0",
+    "angular-route": "^1.6.4",
+    "angular-cookies": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "angular-mocks": "^1.6.4",
+    "angular-translate": "^2.15.1",
+    "angular-screenfull": "^0.1.1"
+  }
+}
