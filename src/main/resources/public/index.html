@@ -1,43 +1,101 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>AIR</title>
-<link href="bower_components/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"
-	rel="stylesheet">
-<link href="bower_components/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet">
-<link href="bower_components/angular-material/angular-material.min.css"
-	rel="stylesheet">
-<link href="css/amis-webapp.css" rel="stylesheet">
-<link href="amis-dashboard/css/dashboard.css" rel="stylesheet">
-</head>
-<div><p>HELLO</p></div>
-<body ng-app>
-<p> <input type="text" ng-model="name"></p>
-<p>{{name}}</p>
-</body>
-
-<script src="bower_components/highcharts/highmaps.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.min.js"></script>
-<script src="bower_components/angular-resource/angular-resource.min.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-material/angular-material.min.js"></script>
-<script src="bower_components/angular-animate/angular-animate.min.js"></script>
-<script src="bower_components/angular-aria/angular-aria.min.js"></script>
-<script src="bower_components/angular-messages/angular-messages.min.js"></script>
-<script src="bower_components/angular-translate/angular-translate.min.js"></script>
-<script src="bower_components/screenfull/dist/screenfull.js"></script>
-<script src="bower_components/angular-screenfull/dist/angular-screenfull.min.js"></script>
-<!-- Air Javascript -->
-<script src="js/app.js"></script>
-<script src="js/controllers.js"></script>
-<script src="js/filters.js"></script>
-<script src="js/routes.js"></script>
-<script src="js/services.js"></script>
+<html ng-app="AirApp">
+  <head>
+    <!-- Angulars Material CSS using RawGit to load directly from `bower-material/master` -->
+    <link rel="stylesheet" href="https://rawgit.com/angular/bower-material/master/angular-material.css">
+    <script>
+      document.write('<base href="' + document.location + '" />');
+    </script>
+    <style>p { font-size: 0.75em; }</style>
+  </head>
+  <body align="center">
+    <h1>AIR APPLICATION</h1>
+    <div layout="column">
+     <div ng-controller="partenzeController" class="md-padding" ng-cloak>
+		<div>
+			<div layout="row" layout-align="center">
+			<md-input-container style="margin-right: 10px; align: center">
+			<label>Fermata di partenza</label>
+			<md-select ng-model="partenza">
+			<md-option ng-repeat="partenza in partenze" value="{{partenza}}">{{partenza}}</md-option>
+			</md-select>
+			</md-input-container>
+			</div>
+		</div>
+	</div>
+	 <div ng-controller="arriviController" class="md-padding" ng-cloak>
+		<div>
+			<div layout="row" layout-align="center">
+			<md-input-container style="margin-right: 10px;">
+			<label>Fermata di arrivo</label>
+			<md-select ng-model="arrivo">
+			<md-option ng-repeat="arrivo in arrivi" value="{{arrivo}}">{{arrivo}}</md-option>
+			</md-select>
+			</md-input-container>
+			</div>
+		</div>
+	</div>
+	<div>
+	<h3>Data di viaggio</h3>
+	<md-content ng-controller="datePickerController as dateCtrl" layout-padding ng-cloak>
+	<div layout-gt-xs="row">
+		<div flex-gt-xs>
+      <md-datepicker ng-model="dateCtrl.myDate" md-placeholder="Enter date"></md-datepicker>
+		</div>
+	</md-content>
+	</div> 
+    </div>
+	<div layout="row" layout-align="center">
+	<h3>Dalle</h3>
+	<div style="margin:20px" ng-controller="timePickerController" ng-cloak>
+	<input type="time" id="exampleInput" name="input" ng-model="example.value"
+       placeholder="HH:mm:ss" min="08:00:00" max="23:00:00" required />
+   <div role="alert">
+     <span class="error" ng-show="myForm.input.$error.required">
+         Required!</span>
+     <span class="error" ng-show="myForm.input.$error.time">
+         Not a valid date!</span>
+	</div>
+	</div>
+	<h3>Alle</h3>
+	<div style="margin:20px" ng-controller="timePickerController" ng-cloak>
+	<input type="time" id="exampleInput" name="input" ng-model="example.value"
+       placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
+   <div role="alert">
+     <span class="error" ng-show="myForm.input.$error.required">
+         Required!</span>
+     <span class="error" ng-show="myForm.input.$error.time">
+         Not a valid date!</span>
+	</div>
+	</div>
+	</div>
+	<div layout="row" layout-align="center">
+	<md-button class="md-raised md-primary">Prenota andata</md-button>
+	<md-button class="md-raised md-primary">Prenota ritorno</md-button>
+	</div>
+	</body>
+	<!-- Bower -->
+  	<script src="bower_components/highcharts/highmaps.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-material/angular-material.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+	<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+	<script src="bower_components/screenfull/dist/screenfull.js"></script>
+	<script src="bower_components/angular-screenfull/dist/angular-screenfull.min.js"></script>
+	<!-- Air Javascript -->
+	<script src="js/app.js"></script>
+	<script src="js/filters/filters.js"></script>
+	<script src="js/routes/routes.js"></script>
+	<script src="js/services/services.js"></script>
+	<script src="js/controllers/partenzeController.js"></script>
+	<script src="js/controllers/arriviController.js"></script>
+	<script src="js/controllers/datePickerController.js"></script>
+	<script src="js/controllers/timePickerController.js"></script>
 </html>
