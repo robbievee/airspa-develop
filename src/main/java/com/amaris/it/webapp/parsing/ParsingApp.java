@@ -11,12 +11,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+
 public class ParsingApp {
 	
-	private List<String> stopCode;
-	private List<String> stopName;
-	private List<String> terminalCode;
- 	
 	public static void main(String[] args) throws IOException{
 		 Document doc = Jsoup.connect("http://ro.autobus.it/ro/asp/ricercaorari.asp?user=air").get();  
          String stopsContainerElementId = "LocDest";
@@ -24,12 +22,18 @@ public class ParsingApp {
          
 		 Elements optionList = timetables.select("option");
 		 List<String> valuesList = optionList.eachAttr("value");
+		 List<BusStop> stopList = new ArrayList<BusStop>();
 		 for (String value : valuesList) {
-			for(int i=0; i <= valuesList.size(); i++){
-			 String[] output = value.split("|");
-			 System.out.println(output[i]);
-			 }
+		   BusStop stop = new BusStop();
+		   String[] parts = value.split("\\|");
+		   stop.setCodeStop(parts[0]);
+		   stop.setName(parts[1]);
+		   stop.setTerminalCode(parts[2]);
+		   stopList.add(stop);
 		}
+		 for (BusStop stop : stopList) {
+      System.out.println(stop.getCodeStop() + " " + stop.getName() + " " + stop.getTerminalCode());
+    }
 	}
 
 }
