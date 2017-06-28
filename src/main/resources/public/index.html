@@ -73,24 +73,23 @@
 	<md-button class="md-raised md-primary">Prenota andata</md-button>
 	<md-button class="md-raised md-primary">Prenota ritorno</md-button>
 	</div>
-	<div ng-controller="tableController" layout-margin>
-	 <mdt-table paginated-rows="{isEnabled: true, rowsPerPageValues: [5,10,20,100]}"
-             mdt-row="{
-                      data: busStopList,
-                      'column-keys': [
-                          'codice fermata',
-                          'nome fermata',
-                          'codice finale',
-                      ]
-                      }">
-    <mdt-header-row>
-      <mdt-column align-rule="left">Codice fermata</mdt-column>
-      <mdt-column align-rule="right">Nome fermata</mdt-column>
-      <mdt-column align-rule="right">Codice finale</mdt-column>
-    </mdt-header-row>
-  </mdt-table>
+	<div layout-align="center">
+		<table ng-controller="tableController">
+			<thead>
+				<tr>
+					<td>Codice fermata</td>
+					<td>Nome fermata</td>
+					<td>Codice finale</td>
+				</tr>
+			</thead>
+			<tr ng-repeat="busStop in busStopList">
+				<td>bustStop.codeStop</td>
+				<td>bustStop.name</td>
+				<td>busStop.terminalCode</td>
+			</tr>
+		</table>
 	</div>
-	</body>
+</body>
 	<!-- Bower -->
   	<script src="bower_components/highcharts/highmaps.js"></script>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
