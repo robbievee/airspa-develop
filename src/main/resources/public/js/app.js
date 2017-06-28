@@ -1,1 +1,1 @@
-angular.module('AirApp',['ngMaterial']);
+angular.module('AirApp',['ngMaterial','mdDataTable']);

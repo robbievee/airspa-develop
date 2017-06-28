@@ -73,6 +73,23 @@
 	<md-button class="md-raised md-primary">Prenota andata</md-button>
 	<md-button class="md-raised md-primary">Prenota ritorno</md-button>
 	</div>
+	<div ng-controller="tableController" layout-margin>
+	 <mdt-table paginated-rows="{isEnabled: true, rowsPerPageValues: [5,10,20,100]}"
+             mdt-row="{
+                      data: busStopList,
+                      'column-keys': [
+                          'codice fermata',
+                          'nome fermata',
+                          'codice finale',
+                      ]
+                      }">
+    <mdt-header-row>
+      <mdt-column align-rule="left">Codice fermata</mdt-column>
+      <mdt-column align-rule="right">Nome fermata</mdt-column>
+      <mdt-column align-rule="right">Codice finale</mdt-column>
+    </mdt-header-row>
+  </mdt-table>
+	</div>
 	</body>
 	<!-- Bower -->
   	<script src="bower_components/highcharts/highmaps.js"></script>
@@ -98,4 +115,5 @@
 	<script src="js/controllers/arriviController.js"></script>
 	<script src="js/controllers/datePickerController.js"></script>
 	<script src="js/controllers/timePickerController.js"></script>
+	<script src="js/controllers/tableController.js"></script>
 </html>
