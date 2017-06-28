@@ -1,6 +1,7 @@
 angular
     .module('AirApp')
-    .controller('arriviController', function($scope, $element) {
+    .controller('arriviController',['$scope', function($scope, $element) {
       $scope.arrivi = ['Napoli' ,'Ariano Irpino' ,'Benevento'];
-    });
+    }
+    ]);
 	
