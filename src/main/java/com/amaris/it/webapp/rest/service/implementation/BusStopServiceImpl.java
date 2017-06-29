@@ -11,29 +11,20 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import com.amaris.it.webapp.model.BusStop;
+import com.amaris.it.webapp.rest.integration.AirIntegration;
 import com.amaris.it.webapp.rest.service.BusStopService;
 
 @Service
-public class BusStopServiceImpl implements BusStopService{
+public class BusStopServiceImpl implements BusStopService {
 
-	@Override
-	public List<BusStop> getBusStopList() throws IOException{
-		  Document doc = Jsoup.connect("http://ro.autobus.it/ro/asp/ricercaorari.asp?user=air").get();  
-	      String stopsContainerElementId = "LocDest";
-			 Element timetables = doc.getElementById(stopsContainerElementId);
-	      
-			 Elements optionList = timetables.select("option");
-			 List<String> valuesList = optionList.eachAttr("value");
-			 List<BusStop> stopList = new ArrayList<BusStop>();
-			 for (String value : valuesList) {
-			   BusStop stop = new BusStop();
-			   String[] parts = value.split("\\|");
-			   stop.setCodeStop(parts[0]);
-			   stop.setName(parts[1]);
-			   stop.setTerminalCode(parts[2]);
-			   stopList.add(stop);
-			 }
-		  return stopList;
-	  }
+  private List<BusStop> busStops = new ArrayList<>();
+
+  @Override
+  public List<BusStop> getBusStopList() throws IOException {
+    if (busStops == null || busStops.isEmpty()) {
+      busStops = AirIntegration.getAirStops();
+    }
+    return busStops;
+  }
 
 }

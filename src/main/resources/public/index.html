@@ -83,9 +83,9 @@
 				</tr>
 			</thead>
 			<tr ng-repeat="busStop in busStopList">
-				<td>bustStop.codeStop</td>
-				<td>bustStop.name</td>
-				<td>busStop.terminalCode</td>
+				<td><span ng-bind="busStop.codeStop"></span></td>
+				<td><span ng-bind="busStop.name"></td>
+				<td><span ng-bind="busStop.terminalCode"></span></td>
 			</tr>
 		</table>
 	</div>
@@ -109,7 +109,7 @@
 	<script src="js/app.js"></script>
 	<script src="js/filters/filters.js"></script>
 	<script src="js/routes/routes.js"></script>
-	<script src="js/services/services.js"></script>
+<!-- 	<script src="js/services/services.js"></script> -->
 	<script src="js/controllers/partenzeController.js"></script>
 	<script src="js/controllers/arriviController.js"></script>
 	<script src="js/controllers/datePickerController.js"></script>
