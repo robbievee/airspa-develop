@@ -1,9 +1,9 @@
-package com.amaris.it.webapp.rest.service;
+package com.robbievee.it.webapp.rest.service;
 
 import java.io.IOException;
 import java.util.List;
 
-import com.amaris.it.webapp.model.BusStop;
+import com.robbievee.it.webapp.model.BusStop;
 
 public interface BusStopService {
 

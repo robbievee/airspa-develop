@@ -1,4 +1,4 @@
-package com.amaris.it.webapp.rest.controller;
+package com.robbievee.it.webapp.rest.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amaris.it.webapp.rest.service.BusStopService;
-import com.amaris.it.webapp.model.BusStop;
+import com.robbievee.it.webapp.model.BusStop;
+import com.robbievee.it.webapp.rest.service.BusStopService;
 
 @RestController
 @RequestMapping("/busstop")

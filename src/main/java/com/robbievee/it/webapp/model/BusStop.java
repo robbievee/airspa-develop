@@ -1,4 +1,4 @@
-package com.amaris.it.webapp.model;
+package com.robbievee.it.webapp.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
