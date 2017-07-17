@@ -10,14 +10,15 @@
   </head>
   <body align="center">
     <h1>AIR APPLICATION</h1>
+    <form ng-controller="formController">
     <div layout="column">
      <div ng-controller="departuresController" class="md-padding" ng-cloak>
 		<div>
 			<div layout="row" layout-align="center">
 			<md-input-container style="margin-right: 10px; align: center">
 			<label>Fermata di partenza</label>
-			<md-select ng-model="departure">
-			<md-option ng-repeat="departure in departures" value="{{departure}}">{{departure}}</md-option>
+			<md-select  ng-model="departure">
+			<md-option ng-repeat="departure in departuresList" value="{{departure.codeStop}}">{{departure.name}}</md-option>
 			</md-select>
 			</md-input-container>
 			</div>
@@ -29,7 +30,7 @@
 			<md-input-container style="margin-right: 10px;">
 			<label>Fermata di arrivo</label>
 			<md-select ng-model="arrival">
-			<md-option ng-repeat="arrival in arrivals" value="{{arrival}}">{{arrival}}</md-option>
+			<md-option ng-repeat="arrival in arrivalsList" value="{{arrival.codeStop}}">{{arrival.name}}</md-option>
 			</md-select>
 			</md-input-container>
 			</div>
@@ -47,8 +48,8 @@
     </div>
 	<div layout="row" layout-align="center">
 	<h3>Dalle</h3>
-	<div style="margin:20px" ng-controller="timePickerController" ng-cloak>
-	<input type="time" id="exampleInput" name="input" ng-model="example.value"
+	<div style="margin:20px" ng-controller="fromTimeController" ng-cloak>
+	<input type="time" id="fromTimeInput" name="input" ng-model="fromTime.value"
        placeholder="HH:mm:ss" min="08:00:00" max="23:00:00" required />
    <div role="alert">
      <span class="error" ng-show="myForm.input.$error.required">
@@ -58,8 +59,8 @@
 	</div>
 	</div>
 	<h3>Alle</h3>
-	<div style="margin:20px" ng-controller="timePickerController" ng-cloak>
-	<input type="time" id="exampleInput" name="input" ng-model="example.value"
+	<div style="margin:20px" ng-controller="toTimeController" ng-cloak>
+	<input type="time" id="toTimeInput" name="input" ng-model="toTime.value"
        placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
    <div role="alert">
      <span class="error" ng-show="myForm.input.$error.required">
@@ -70,7 +71,7 @@
 	</div>
 	</div>
 	<div layout="row" layout-align="center">
-	<md-button class="md-raised md-primary">Prenota andata</md-button>
+	<md-button class="md-raised md-primary" ng-click="showSelectValue(departure.codeStop)">Prenota andata</md-button>
 	<md-button class="md-raised md-primary">Prenota ritorno</md-button>
 	</div>
 	<div layout="row" layout-align="center">
@@ -89,6 +90,7 @@
 			</tr>
 		</table>
 	</div>
+	</form>
 </body>
 	<!-- Bower -->
   	<script src="bower_components/highcharts/highmaps.js"></script>
@@ -109,9 +111,11 @@
 	<script src="js/app.js"></script>
 	<script src="js/filters/filters.js"></script>
 	<script src="js/routes/routes.js"></script>
+	<script src="js/controllers/formController.js"></script>
 	<script src="js/controllers/departuresController.js"></script>
 	<script src="js/controllers/arrivalsController.js"></script>
 	<script src="js/controllers/datePickerController.js"></script>
-	<script src="js/controllers/timePickerController.js"></script>
+	<script src="js/controllers/fromTimeController.js"></script>
+	<script src="js/controllers/toTimeController.js"></script>
 	<script src="js/controllers/tableController.js"></script>
 </html>
