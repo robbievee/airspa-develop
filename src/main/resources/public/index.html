@@ -10,27 +10,28 @@
   </head>
   <body align="center">
     <h1>AIR APPLICATION</h1>
-    <form ng-controller="formController">
+    <div ng-controller="formController">
+    <form id="airForm">
     <div layout="column">
-     <div ng-controller="departuresController" class="md-padding" ng-cloak>
+     <div class="md-padding" ng-cloak>
 		<div>
 			<div layout="row" layout-align="center">
 			<md-input-container style="margin-right: 10px; align: center">
 			<label>Fermata di partenza</label>
-			<md-select  ng-model="departure">
-			<md-option ng-repeat="departure in departuresList" value="{{departure.codeStop}}">{{departure.name}}</md-option>
+			<md-select ng-model="departure">
+			<md-option id="departureOption" ng-repeat="departure in busStopList" value="{{departure.codeStop}}">{{departure.name}}</md-option>
 			</md-select>
 			</md-input-container>
 			</div>
 		</div>
 	</div>
-	 <div ng-controller="arrivalsController" class="md-padding" ng-cloak>
+	 <div class="md-padding" ng-cloak>
 		<div>
 			<div layout="row" layout-align="center">
 			<md-input-container style="margin-right: 10px;">
 			<label>Fermata di arrivo</label>
 			<md-select ng-model="arrival">
-			<md-option ng-repeat="arrival in arrivalsList" value="{{arrival.codeStop}}">{{arrival.name}}</md-option>
+			<md-option id="arrivalOption" ng-repeat="arrival in busStopList" value="{{arrival.codeStop}}">{{arrival.name}}</md-option>
 			</md-select>
 			</md-input-container>
 			</div>
@@ -38,17 +39,17 @@
 	</div>
 	<div>
 	<h3>Data di viaggio</h3>
-	<md-content ng-controller="datePickerController as dateCtrl" layout-padding ng-cloak>
+	<md-content layout-padding ng-cloak>
 	<div layout-gt-xs="row">
 		<div flex-gt-xs>
-      <md-datepicker ng-model="dateCtrl.myDate" md-placeholder="Enter date"></md-datepicker>
+      <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
 		</div>
 	</md-content>
 	</div> 
     </div>
 	<div layout="row" layout-align="center">
 	<h3>Dalle</h3>
-	<div style="margin:20px" ng-controller="fromTimeController" ng-cloak>
+	<div style="margin:20px" ng-cloak>
 	<input type="time" id="fromTimeInput" name="input" ng-model="fromTime.value"
        placeholder="HH:mm:ss" min="08:00:00" max="23:00:00" required />
    <div role="alert">
@@ -59,7 +60,7 @@
 	</div>
 	</div>
 	<h3>Alle</h3>
-	<div style="margin:20px" ng-controller="toTimeController" ng-cloak>
+	<div style="margin:20px" ng-cloak>
 	<input type="time" id="toTimeInput" name="input" ng-model="toTime.value"
        placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
    <div role="alert">
@@ -71,7 +72,7 @@
 	</div>
 	</div>
 	<div layout="row" layout-align="center">
-	<md-button class="md-raised md-primary" ng-click="showSelectValue(departure.codeStop)">Prenota andata</md-button>
+	<md-button class="md-raised md-primary" ng-click="showDeparture()">Prenota andata</md-button>
 	<md-button class="md-raised md-primary">Prenota ritorno</md-button>
 	</div>
 	<div layout="row" layout-align="center">
@@ -112,10 +113,5 @@
 	<script src="js/filters/filters.js"></script>
 	<script src="js/routes/routes.js"></script>
 	<script src="js/controllers/formController.js"></script>
-	<script src="js/controllers/departuresController.js"></script>
-	<script src="js/controllers/arrivalsController.js"></script>
-	<script src="js/controllers/datePickerController.js"></script>
-	<script src="js/controllers/fromTimeController.js"></script>
-	<script src="js/controllers/toTimeController.js"></script>
 	<script src="js/controllers/tableController.js"></script>
 </html>
