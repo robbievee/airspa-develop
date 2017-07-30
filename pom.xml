@@ -16,18 +16,14 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.2.RELEASE</version>
 	</parent>
+	
 	<dependencies>
-
-
-
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -42,8 +38,6 @@
 			<artifactId>json-path</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<!-- jsoup HTML parser library @ https://jsoup.org/ -->
 			<groupId>org.jsoup</groupId>
@@ -55,7 +49,6 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-
 
 	<profiles>
 		<profile>
@@ -82,32 +75,33 @@
 
 
 	<build>
-		<plugins>
-		<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>exec-bower-install</id>
-						<phase>generate-resources</phase>
-						<configuration>
-							<executable>${bower.path}</executable>
-							<arguments>
-								<argument>install</argument>
-							</arguments>
-						</configuration>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>exec-bower-install</id>
+							<phase>generate-sources</phase>
+							<configuration>
+								<executable>bower</executable>
+								<arguments>
+									<argument>install</argument>
+								</arguments>
+							</configuration>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<finalName>air-spa-webapp</finalName>
 	</build>
 </project>
